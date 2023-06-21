@@ -25,22 +25,27 @@ const authenticateGoogle = () => {
 };
 
 const uploadToGoogleDrive = async (file, auth) => {
-  const fileMetadata = {
-    name: file.originalname,
-    parents: ["17lBRt7K3wlOwjqDsijp6yWZv4M-Qin45"], // Change it according to your desired parent folder id
-    //? SUGIO parent = 17lBRt7K3wlOwjqDsijp6yWZv4M-Qin45
-  };
-  const media = {
-    mimeType: file.mimetype,
-    body: fs.createReadStream(file.path),
-  };
-  const driveService = google.drive({ version: "v3", auth });
-  const response = await driveService.files.create({
-    requestBody: fileMetadata,
-    media: media,
-    fields: "id",
-  });
-  return response;
+  try {
+    const fileMetadata = {
+      name: file.originalname,
+      parents: ["17lBRt7K3wlOwjqDsijp6yWZv4M-Qin45"], // Change it according to your desired parent folder id
+      //? SUGIO parent = 17lBRt7K3wlOwjqDsijp6yWZv4M-Qin45
+    };
+    const media = {
+      mimeType: file.mimetype,
+      body: fs.createReadStream(file.path),
+    };
+    const driveService = google.drive({ version: "v3", auth });
+    const response = await driveService.files.create({
+      requestBody: fileMetadata,
+      media: media,
+      fields: "id",
+    });
+    return response;
+  } catch (err) {
+    console.log(err)
+    return err
+  }
 };
 
 const deleteFile = (filePath) => {

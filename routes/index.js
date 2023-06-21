@@ -17,6 +17,7 @@ router.post("/upload", multer.single("file"), async (req, res, next) => {
     res.status(200).json({ response });
   } catch (err) {
     console.log(err);
+    res.status(400).json({ err });
   }
 });
 
