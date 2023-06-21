@@ -9,8 +9,8 @@ const app = express();
 const apiPort = 5000
 
 const Routes = require('./routes');
-var key = fs.readFileSync(path.join(__dirname, 'cert', 'key.pem'));
-var cert = fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'));
+var key = fs.readFileSync(path.join(__dirname, 'cert', 'key.key'));
+var cert = fs.readFileSync(path.join(__dirname, 'cert', 'cert.key'));
 var options = {
   key: key,
   cert: cert
