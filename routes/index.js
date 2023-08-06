@@ -22,12 +22,10 @@ router.post("/upload", multer.single("file"), async (req, res, next) => {
       })
       return;
     }
-    const pathFile = path.join(__dirname, `../api/file/files/${req.file.filename}` )
-    const testUrl = url.pathToFileURL(pathFile);
     res.send({
       status: true,
       msg: 'Upload Success',
-      url: testUrl
+      url: `documents/${req.file.filename}`
     })
     // const auth = authenticateGoogle();
     // const response = await uploadToGoogleDrive(req.file, auth);

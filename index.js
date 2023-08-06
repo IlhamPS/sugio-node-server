@@ -1,8 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
-const https = require('https');
-const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
@@ -31,7 +29,8 @@ app.get('/', (req, res) => {
   })
 })
 
-app.use('/api', Routes)
+app.use('/api', Routes);
+app.use(express.static('public'))
 
 // var server = https.createServer(options, app);
 app.listen(apiPort, () => {

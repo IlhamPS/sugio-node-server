@@ -1,11 +1,14 @@
 const { google } = require('googleapis');
 const Multer = require('multer')
 const fs = require('fs')
+const path = require('path')
+
+const destination = path.join(__dirname, '../../public/documents')
 
 const multer = Multer({
   storage: Multer.diskStorage({
     destination: function (req, file, callback) {
-      callback(null, `${__dirname}/files`);
+      callback(null, destination);
     },
     filename: function (req, file, callback) {
       callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
