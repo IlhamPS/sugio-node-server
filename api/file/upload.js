@@ -13,10 +13,7 @@ const multer = Multer({
     filename: function (req, file, callback) {
       callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
     },
-  }),
-  limits: {
-    fileSize: 5 * 1024 * 1024,
-  },
+  })
 });
 
 const authenticateGoogle = () => {
