@@ -2,13 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
 const path = require('path');
-const url = require('url');
+// const url = require('url');
 const http = require('http');
 const https = require('https');
 const fs = require('fs')
 
 const app = express();
-const apiPort = 5000
+const apiPort = 8443
 
 const Routes = require('./routes');
 var key = fs.readFileSync(path.join(__dirname, 'cert', 'key.key'));
